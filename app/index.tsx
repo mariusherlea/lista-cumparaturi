@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useEffect, useState } from "react";
-import { Button, FlatList, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
+import { FlatList, Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 
 export default function App() {
   const [item, setItem] = useState("");
@@ -77,7 +77,9 @@ export default function App() {
         onChangeText={setItem}
       />
 
-      <Button title="Adaugă" onPress={addItem} />
+      <Pressable style={styles.button} onPress={addItem}>
+  <Text style={styles.buttonText}>➕ Adaugă</Text>
+</Pressable>
 
       <FlatList
         data={list}
@@ -89,11 +91,55 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, padding: 20, backgroundColor: "#f2f2f2" },
-  title: { fontSize: 24, fontWeight: "bold", marginBottom: 20 },
-  input: { borderWidth: 1, borderColor: "#ccc", padding: 10, marginBottom: 10, backgroundColor: "#fff" },
-  itemContainer: { flexDirection: "row", alignItems: "center", marginBottom: 5 },
-  item: { padding: 10, fontSize: 18 },
-  bought: { textDecorationLine: "line-through", color: "gray" },
-  delete: { fontSize: 18, padding: 10 }
+  container: { 
+    flex: 1, 
+    padding: 20, 
+    backgroundColor: "#000" // 🔹 fundal negru
+  },
+  title: { 
+    fontSize: 24, 
+    fontWeight: "bold", 
+    marginBottom: 20, 
+    color: "#fff", // 🔹 text alb
+    textAlign: "center"
+  },
+  input: { 
+    borderBottomWidth: 2, // 🔹 underline
+    borderBottomColor: "red", // 🔹 underline roșu
+    padding: 10, 
+    marginBottom: 10, 
+    color: "#fff", // 🔹 text alb în input
+  },
+  itemContainer: { 
+    flexDirection: "row", 
+    alignItems: "center", 
+    marginBottom: 5 
+  },
+  item: { 
+    padding: 10, 
+    fontSize: 18, 
+    color: "#fff" // 🔹 text alb
+  },
+  bought: { 
+    textDecorationLine: "line-through", 
+    color: "gray" 
+  },
+  delete: { 
+    fontSize: 18, 
+    padding: 10, 
+    color: "red" // 🔹 buton de ștergere roșu
+  }, 
+  button: {
+  backgroundColor: "red",      // 🔹 fundal roșu
+  padding: 12,
+  borderRadius: 8,
+  alignItems: "center",
+  marginBottom: 15,
+},
+buttonText: {
+  color: "#fff",              // 🔹 text alb
+  fontSize: 18,
+  fontWeight: "bold",
+},
 });
+
